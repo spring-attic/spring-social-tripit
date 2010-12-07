@@ -13,13 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.springframework.social.tripit;
 
-rootProject.name = 'spring-social'
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
 
-include 'docs'
-include 'spring-social-core'
-include 'spring-social-facebook'
-include 'spring-social-linkedin'
-include 'spring-social-oauth'
-include 'spring-social-tripit'
-include 'spring-social-twitter'
+/**
+ * @author Craig Walls
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class TripItProfileResponse {
+	private long timestamp;
+
+	@JsonProperty("Profile")
+	TripItProfile profile;
+
+	public long getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public TripItProfile getProfile() {
+		return profile;
+	}
+}
