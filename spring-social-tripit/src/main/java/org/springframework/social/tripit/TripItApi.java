@@ -28,7 +28,7 @@ import java.util.List;
  * 
  * @author Craig Walls
  */
-public interface TripItOperations {
+public interface TripItApi {
 
 	/**
 	 * Retrieves the user's TripIt profile ID.
