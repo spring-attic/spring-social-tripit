@@ -13,11 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.tripit;
+package org.springframework.social.tripit.connect;
 
 import org.springframework.social.oauth1.AbstractOAuth1ServiceProvider;
 import org.springframework.social.oauth1.OAuth1Template;
 import org.springframework.social.oauth1.OAuth1Version;
+import org.springframework.social.tripit.api.TripItApi;
+import org.springframework.social.tripit.api.impl.TripItTemplate;
 
 /**
  * TripIt ServiceProvider implementation.

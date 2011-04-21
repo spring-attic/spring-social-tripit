@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.tripit;
+package org.springframework.social.tripit.api.impl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,6 +24,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.social.oauth1.ProtectedResourceClientFactory;
+import org.springframework.social.tripit.api.Trip;
+import org.springframework.social.tripit.api.TripItApi;
+import org.springframework.social.tripit.api.TripItProfile;
 import org.springframework.web.client.RestTemplate;
 
 /**
