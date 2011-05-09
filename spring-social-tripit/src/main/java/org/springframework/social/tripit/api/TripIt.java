@@ -29,7 +29,7 @@ import org.springframework.social.tripit.api.impl.TripItTemplate;
  * 
  * @author Craig Walls
  */
-public interface TripItApi {
+public interface TripIt {
 
 	/**
 	 * Retrieves the user's TripIt profile ID.
