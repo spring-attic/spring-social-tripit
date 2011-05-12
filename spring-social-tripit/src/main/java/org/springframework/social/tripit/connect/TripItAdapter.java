@@ -27,11 +27,11 @@ import org.springframework.web.client.HttpClientErrorException;
  * TripIt ApiAdapter implementation.
  * @author Keith Donald
  */
-public class TripItApiAdapter implements ApiAdapter<TripIt> {
+public class TripItAdapter implements ApiAdapter<TripIt> {
 
-	public boolean test(TripIt api) {
+	public boolean test(TripIt tripit) {
 		try {
-			api.getUserProfile();
+			tripit.getUserProfile();
 			return true;
 		} catch (HttpClientErrorException e) { 
 			// TODO: Have api throw more specific exception and trigger off of that.
@@ -39,20 +39,20 @@ public class TripItApiAdapter implements ApiAdapter<TripIt> {
 		}
 	}
 
-	public void setConnectionValues(TripIt api, ConnectionValues values) {
-		TripItProfile profile = api.getUserProfile();
+	public void setConnectionValues(TripIt tripit, ConnectionValues values) {
+		TripItProfile profile = tripit.getUserProfile();
 		values.setProviderUserId(profile.getId());
 		values.setDisplayName(profile.getScreenName());
 		values.setProfileUrl(profile.getProfileUrl());
 		values.setImageUrl(profile.getProfileImageUrl());
 	}
 
-	public UserProfile fetchUserProfile(TripIt api) {
-		TripItProfile profile = api.getUserProfile();
+	public UserProfile fetchUserProfile(TripIt tripit) {
+		TripItProfile profile = tripit.getUserProfile();
 		return new UserProfileBuilder().setName(profile.getPublicDisplayName()).setEmail(profile.getEmailAddress()).setUsername(profile.getScreenName()).build();
 	}
 	
-	public void updateStatus(TripIt api, String message) {
+	public void updateStatus(TripIt tripit, String message) {
 		// not supported
 	}
 
