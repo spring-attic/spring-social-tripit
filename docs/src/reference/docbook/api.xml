@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="apis" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>TripIt API Binding</title>
+  
+	<para>
+		Using Spring Social TripIt's <interfacename>TripIt</interfacename> interface and its implementation, <classname>TripItTemplate</classname>, you can develop applications that integrate a user's travel information and network.
+	</para>
+	
+	<para>
+		To create an instance of <classname>TripItTemplate</classname>, pass in your application's OAuth 1 credentials along with a user's access token/secret pair to the constructor:
+	</para>
+	
+	<programlisting language="java"><![CDATA[
+String consumerKey = "..."; // The application's consumer key
+String consumerSecret = "..."; // The application's consumer secret
+String accessToken = "..."; // The access token granted after OAuth authorization
+String accessTokenSecret = "..."; // The access token secret granted after OAuth authorization
+TripIt tripit = new TripItTemplate(consumerKey, consumerSecret, accessToken, accessTokenSecret);]]>
+	</programlisting>
+		
+	<para>
+		If you are using Spring Social's <ulink url="http://static.springsource.org/spring-social/docs/1.0.x/reference/html/serviceprovider.html">service provider framework</ulink>, you can get an instance of <interfacename>TripIt</interfacename> from a <interfacename>Connection</interfacename>. 
+		For example, the following snippet calls <methodname>getApi()</methodname> on a connection to retrieve a <interfacename>TripIt</interfacename>:
+	</para>				
+	
+	<programlisting language="java"><![CDATA[
+Connection<TripIt> connection = connectionRepository.findPrimaryConnectionToApi(TripIt.class);
+TripIt tripit = connection.getApi();]]>
+	</programlisting>
+		
+	<para>
+		Here, <interfacename>ConnectionRepository</interfacename> is being asked for the primary connections that the current user has with TripIt.
+		From that connection, it retrieves a <interfacename>TripIt</interfacename> instance that is configured with the connection details received when the connection was first established.
+	</para>
+			
+	<para>
+		In either event, once you have a <interfacename>TripIt</interfacename>, you can use it to retrieve a user's profile and travel data from TripIt.
+	</para>
+
+	<section id="tripit-getProfile">
+		<title>Retrieving a user's TripIt profile data</title>
+		
+		<para>
+			<interfacename>TripIt</interfacename>' <methodname>getUserProfile()</methodname> method is useful for retrieving the authenticated user's TripIt profile data. 
+			For example:
+		</para>
+		
+		<programlisting language="java"><![CDATA[
+TripItProfile userProfile = tripit.getUserProfile();]]>
+		</programlisting>
+		
+		<para>
+			<methodname>getUserProfile()</methodname> returns a <classname>TripItProfile</classname> object that carries details about the user from TripIt. 
+			This includes the user's screen name, their display name, their home city, and their company.
+		</para>
+		
+		<para>
+			If all you need is the user's TripIt screen name, you can get that by calling <methodname>getProfileId()</methodname>:
+		</para>
+		
+		<programlisting language="java"><![CDATA[
+String profileId = tripit.getProfileId();]]>
+		</programlisting>
+		
+		<para>
+			Or if you only need a URL to the user's TripIt profile page, then call <methodname>getProfileUrl()</methodname>:
+		</para>
+		
+		<programlisting language="java"><![CDATA[
+String profileUrl = tripit.getProfileUrl();]]>
+		</programlisting>
+		
+	</section>
+
+	<section id="tripit-trips">
+		<title>Getting a user's upcoming trips</title>
+		
+		<para>
+			If the user has any upcoming trips planned, your application can access the trip information by calling <methodname>getUpcomingTrips()</methodname>:
+		</para>
+		
+		<programlisting language="java"><![CDATA[
+List<Trip> trips = tripit.getUpcomingTrips();]]>
+		</programlisting>
+		
+		<para>
+			This returns a list of <classname>Trip</classname> objects containing details about each trip, such as the start and end dates for the trip, the primary location, and the trip's display name.
+		</para>
+	</section>
+</chapter>
