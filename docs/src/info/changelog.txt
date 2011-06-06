@@ -1,4 +1,7 @@
 Spring Social 1.0.0 Milestone 4 (June 7, 2011)
 ==============================================
-- Extracted Spring Social TripIt module from core Spring Social project.
-- Renamed TripItApi to TripIt.
+ - Extracted Spring Social TripIt module from core Spring Social project.
+ - Renamed TripItApi to TripIt.
+
+Refer to Spring Social's changelog for a history of the TripIt module
+prior to it being extracted into its own project.
