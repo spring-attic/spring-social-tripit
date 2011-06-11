@@ -17,6 +17,7 @@ package org.springframework.social.tripit.api;
 
 import java.util.List;
 
+import org.springframework.social.ApiBinding;
 import org.springframework.social.tripit.api.impl.TripItTemplate;
 
 /**
@@ -29,7 +30,7 @@ import org.springframework.social.tripit.api.impl.TripItTemplate;
  * 
  * @author Craig Walls
  */
-public interface TripIt {
+public interface TripIt extends ApiBinding {
 
 	/**
 	 * Retrieves the user's TripIt profile ID.

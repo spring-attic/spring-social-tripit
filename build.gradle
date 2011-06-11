@@ -99,6 +99,7 @@ configure(javaprojects) {
     junitVersion = '4.8.2'
     mockitoVersion = '1.8.5'
     springVersion = '3.1.0.M2'
+    springSecurityVersion = '3.1.0.CI-SNAPSHOT'
 
     sourceSets {
         main {
@@ -118,6 +119,7 @@ configure(javaprojects) {
         testCompile "junit:junit:$junitVersion"
         testCompile "org.mockito:mockito-all:$mockitoVersion"
         testCompile "org.springframework:spring-test:$springVersion"
+        testCompile "org.springframework.security:spring-security-crypto:$springSecurityVersion"
     }
 
     // enable all compiler warnings (GRADLE-1077)
