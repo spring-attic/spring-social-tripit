@@ -24,13 +24,17 @@ TripIt tripit = new TripItTemplate(consumerKey, consumerSecret, accessToken, acc
 	</para>				
 	
 	<programlisting language="java"><![CDATA[
-Connection<TripIt> connection = connectionRepository.findPrimaryConnectionToApi(TripIt.class);
-TripIt tripit = connection.getApi();]]>
+Connection<TripIt> connection = connectionRepository.findPrimaryConnection(TripIt.class);
+if (connection != null) {
+    TripIt tripit = connection.getApi();
+
+    // ... use TripIt API binding
+}]]>
 	</programlisting>
-		
+
 	<para>
-		Here, <interfacename>ConnectionRepository</interfacename> is being asked for the primary connections that the current user has with TripIt.
-		From that connection, it retrieves a <interfacename>TripIt</interfacename> instance that is configured with the connection details received when the connection was first established.
+		Here, <interfacename>ConnectionRepository</interfacename> is being asked for the primary connection that the current user has with TripIt.
+		If a connection to TripIt is found, it retrieves a <interfacename>TripIt</interfacename> instance that is configured with the connection details received when the connection was first established.
 	</para>
 			
 	<para>
