@@ -1,4 +1,4 @@
-Spring Social TripIt
+Spring Social TripIt ${version}
 -----------------------------------------------------------
 Spring Social TripIt is an extension to Spring Social to enable connectivity with TripIt.
 
