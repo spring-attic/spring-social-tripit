@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 the original author or authors.
+ * Copyright 2013 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,15 @@ package org.springframework.social.tripit.api.impl;
 
 import java.util.List;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.social.oauth1.AbstractOAuth1ApiBinding;
 import org.springframework.social.tripit.api.Trip;
 import org.springframework.social.tripit.api.TripIt;
 import org.springframework.social.tripit.api.TripItProfile;
 import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * The central class for interacting with TripIt.
@@ -70,8 +71,8 @@ public class TripItTemplate extends AbstractOAuth1ApiBinding implements TripIt {
 	private void registerTripItJsonModule(RestTemplate restTemplate) {
 		List<HttpMessageConverter<?>> converters = restTemplate.getMessageConverters();
 		for (HttpMessageConverter<?> converter : converters) {
-			if(converter instanceof MappingJacksonHttpMessageConverter) {
-				MappingJacksonHttpMessageConverter jsonConverter = (MappingJacksonHttpMessageConverter) converter;
+			if(converter instanceof MappingJackson2HttpMessageConverter) {
+				MappingJackson2HttpMessageConverter jsonConverter = (MappingJackson2HttpMessageConverter) converter;
 				ObjectMapper objectMapper = new ObjectMapper();				
 				objectMapper.registerModule(new TripItModule());
 				jsonConverter.setObjectMapper(objectMapper);
