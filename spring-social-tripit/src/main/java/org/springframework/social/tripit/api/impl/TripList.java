@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 the original author or authors.
+ * Copyright 2013 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,18 +21,19 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.JsonToken;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.DeserializationContext;
-import org.codehaus.jackson.map.JsonDeserializer;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.springframework.social.tripit.api.Trip;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * Holder class for Trips. 
@@ -58,15 +59,16 @@ class TripList {
 		@Override
 		public List<Trip> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
 			ObjectMapper objectMapper = new ObjectMapper();
-			objectMapper.setDeserializationConfig(ctxt.getConfig());
+			objectMapper.registerModule(new TripItModule());
 			
-			JsonNode tree = jp.readValueAsTree();
-			if(tree.asToken() == JsonToken.START_OBJECT) {
-				return Collections.singletonList(objectMapper.readValue(tree, Trip.class));
-			} else if(tree.asToken() == JsonToken.START_ARRAY) {
-				List<Trip> trips = new ArrayList<Trip>(tree.size());
-				for(Iterator<JsonNode> iterator = tree.getElements(); iterator.hasNext(); ) {
-					trips.add(objectMapper.readValue(iterator.next(), Trip.class));
+			JsonNode node = jp.readValueAs(JsonNode.class);
+			if(node.asToken() == JsonToken.START_OBJECT) {
+				Trip trip = objectMapper.reader(Trip.class).readValue(node);
+				return Collections.singletonList(trip);
+			} else if(node.asToken() == JsonToken.START_ARRAY) {
+				List<Trip> trips = new ArrayList<Trip>(node.size());
+				for(Iterator<JsonNode> iterator = node.elements(); iterator.hasNext(); ) {
+					trips.add((Trip) objectMapper.reader(Trip.class).readValue(iterator.next()));
 				}
 				return trips;
 			}

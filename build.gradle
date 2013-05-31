@@ -18,7 +18,7 @@ configure(allprojects) {
     targetCompatibility=1.5
 
     springSocialVersion = '1.1.0.BUILD-SNAPSHOT'
-    jacksonVersion = '1.9.9'
+    jacksonVersion = '2.2.1'
     junitVersion = '4.11'
     mockitoVersion = '1.9.5'
     springVersion = '3.2.1.RELEASE'
@@ -94,7 +94,9 @@ project('spring-social-tripit') {
     description = 'TripIt API'
     dependencies {
 		compile "org.springframework.social:spring-social-core:$springSocialVersion"
-    compile "org.codehaus.jackson:jackson-mapper-asl:$jacksonVersion"
+        compile ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+        compile ("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+        compile ("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
 		testCompile "org.springframework:spring-test:$springVersion"
     }
 }
