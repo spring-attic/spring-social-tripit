@@ -15,10 +15,10 @@
  */
 package org.springframework.social.tripit.api.impl;
 
-import org.codehaus.jackson.Version;
-import org.codehaus.jackson.map.module.SimpleModule;
 import org.springframework.social.tripit.api.Trip;
 import org.springframework.social.tripit.api.TripItProfile;
+
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 /**
  * Jackson module for registering mixin annotations against TripIt model classes.
@@ -26,7 +26,7 @@ import org.springframework.social.tripit.api.TripItProfile;
 public class TripItModule extends SimpleModule {
 	
 	public TripItModule() {
-		super("TripItModule", new Version(1, 0, 0, null));
+		super("TripItModule");
 	}
 	
 	@Override
