@@ -24,8 +24,8 @@ configure(allprojects) {
         jacksonVersion = '2.2.1'
         junitVersion = '4.11'
         mockitoVersion = '1.9.5'
-        springVersion = '3.2.1.RELEASE'
-        springSecurityVersion = '3.1.0.RELEASE'
+        springVersion = '4.0.1.RELEASE'
+        springSecurityVersion = '3.2.0.RELEASE'
     }
 
     [compileJava, compileTestJava]*.options*.compilerArgs = ['-Xlint:none']
