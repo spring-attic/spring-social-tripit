@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url 'http://repo.springsource.org/plugins-release' }
+        maven { url 'https://repo.springsource.org/plugins-release' }
     }
     dependencies {
         classpath 'org.springframework.build.gradle:docbook-reference-plugin:0.2.8'
@@ -35,10 +35,10 @@ configure(allprojects) {
     test.systemProperty("java.awt.headless", "true")
 
     repositories {
-        maven { url "http://repo.springsource.org/libs-release" }
-        maven { url "http://repo.springsource.org/libs-milestone" }
-        maven { url "http://repo.springsource.org/libs-snapshot" }
-        maven { url "http://repo.springsource.org/ebr-maven-external" }
+        maven { url "https://repo.springsource.org/libs-release" }
+        maven { url "https://repo.springsource.org/libs-milestone" }
+        maven { url "https://repo.springsource.org/libs-snapshot" }
+        maven { url "https://repo.springsource.org/ebr-maven-external" }
     }
 
     dependencies {
@@ -129,7 +129,7 @@ configure(rootProject) {
         options.header = rootProject.description
         options.overview = 'src/api/overview.html'
         options.links(
-            'http://docs.jboss.org/jbossas/javadoc/4.0.5/connector'
+            'https://docs.jboss.org/jbossas/javadoc/4.0.5/connector'
         )
         source subprojects.collect { project ->
             project.sourceSets.main.allJava
