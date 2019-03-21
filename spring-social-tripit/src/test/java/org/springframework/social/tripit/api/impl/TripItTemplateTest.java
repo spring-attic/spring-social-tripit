@@ -62,7 +62,7 @@ public class TripItTemplateTest {
 		assertEquals("cwalls@vmware.com", profile.getEmailAddress());
 		assertEquals("Plano, TX", profile.getHomeCity());
 		assertEquals("SpringSource", profile.getCompany());
-		assertEquals("http://www.tripit.com/user/habuma", profile.getProfileUrl());
+		assertEquals("https://www.tripit.com/user/habuma", profile.getProfileUrl());
 	}
 
 	@Test
@@ -76,7 +76,7 @@ public class TripItTemplateTest {
 		assertEquals("cwalls@vmware.com", profile.getEmailAddress());
 		assertEquals("Plano, TX", profile.getHomeCity());
 		assertEquals("SpringSource", profile.getCompany());
-		assertEquals("http://www.tripit.com/user/habuma", profile.getProfileUrl());
+		assertEquals("https://www.tripit.com/user/habuma", profile.getProfileUrl());
 	}
 
 	@Test
@@ -90,7 +90,7 @@ public class TripItTemplateTest {
 	public void getProfileUrl() {
 		mockServer.expect(requestTo("https://api.tripit.com/v1/get/profile?format=json")).andExpect(method(GET))
 				.andRespond(withSuccess(new ClassPathResource("profile-single-email.json", getClass()), MediaType.APPLICATION_JSON));
-		assertEquals("http://www.tripit.com/user/habuma", tripIt.getProfileUrl());
+		assertEquals("https://www.tripit.com/user/habuma", tripIt.getProfileUrl());
 	}
 
 	@Test
@@ -105,14 +105,14 @@ public class TripItTemplateTest {
 		assertEquals(16104901, trip.getId());
 		assertEquals("Business", trip.getDisplayName());
 		assertEquals("Newark, NJ", trip.getPrimaryLocation());
-		assertEquals("http://www.tripit.com/trip/show/id/16104901", trip.getTripUrl());
+		assertEquals("https://www.tripit.com/trip/show/id/16104901", trip.getTripUrl());
 		assertDateEquals("2011-05-23", trip.getStartDate());
 		assertDateEquals("2011-05-25", trip.getEndDate());
 		trip = trips.get(1);
 		assertEquals(16104707, trip.getId());
 		assertEquals("Vacation", trip.getDisplayName());
 		assertEquals("Branson, MO", trip.getPrimaryLocation());
-		assertEquals("http://www.tripit.com/trip/show/id/16104707", trip.getTripUrl());
+		assertEquals("https://www.tripit.com/trip/show/id/16104707", trip.getTripUrl());
 		assertDateEquals("2011-05-07", trip.getStartDate());
 		assertDateEquals("2011-05-14", trip.getEndDate());
 	}
@@ -129,7 +129,7 @@ public class TripItTemplateTest {
 		assertEquals(16104707, trip.getId());
 		assertEquals("Vacation", trip.getDisplayName());
 		assertEquals("Branson, MO", trip.getPrimaryLocation());
-		assertEquals("http://www.tripit.com/trip/show/id/16104707", trip.getTripUrl());
+		assertEquals("https://www.tripit.com/trip/show/id/16104707", trip.getTripUrl());
 		assertDateEquals("2011-05-07", trip.getStartDate());
 		assertDateEquals("2011-05-14", trip.getEndDate());
 	}
