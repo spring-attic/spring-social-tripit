@@ -83,7 +83,7 @@ public class Trip {
 	 * @return A URL to the trip page at TripIt
 	 */
 	public String getTripUrl() {
-		return "http://www.tripit.com" + tripPath;
+		return "https://www.tripit.com" + tripPath;
 	}
 
 	private final long id;

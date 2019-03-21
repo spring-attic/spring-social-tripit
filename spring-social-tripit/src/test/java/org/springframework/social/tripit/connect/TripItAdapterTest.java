@@ -31,7 +31,7 @@ public class TripItAdapterTest {
 	
 	@Test
 	public void fetchProfile() {
-		Mockito.when(tripit.getUserProfile()).thenReturn(new TripItProfile("habuma", "habuma", "Craig Walls", "cwalls@vmware.com", "Plano, TX", "SpringSource", "people/habuma", "http://static.tripit.com/uploads/images/0/0/6/006b210269799fa70ff6ae2c0cdb8a41e9c.jpg"));
+		Mockito.when(tripit.getUserProfile()).thenReturn(new TripItProfile("habuma", "habuma", "Craig Walls", "cwalls@vmware.com", "Plano, TX", "SpringSource", "people/habuma", "https://static.tripit.com/uploads/images/0/0/6/006b210269799fa70ff6ae2c0cdb8a41e9c.jpg"));
 		UserProfile profile = apiAdapter.fetchUserProfile(tripit);
 		assertEquals("Craig Walls", profile.getName());
 		assertEquals("Craig", profile.getFirstName());
@@ -42,7 +42,7 @@ public class TripItAdapterTest {
 
 	@Test
 	public void fetchProfileFirstNameOnly() {
-		Mockito.when(tripit.getUserProfile()).thenReturn(new TripItProfile("habuma", "habuma", "Craig", "cwalls@vmware.com", "Plano, TX", "SpringSource", "people/habuma", "http://static.tripit.com/uploads/images/0/0/6/006b210269799fa70ff6ae2c0cdb8a41e9c.jpg"));
+		Mockito.when(tripit.getUserProfile()).thenReturn(new TripItProfile("habuma", "habuma", "Craig", "cwalls@vmware.com", "Plano, TX", "SpringSource", "people/habuma", "https://static.tripit.com/uploads/images/0/0/6/006b210269799fa70ff6ae2c0cdb8a41e9c.jpg"));
 		UserProfile profile = apiAdapter.fetchUserProfile(tripit);
 		assertEquals("Craig", profile.getName());
 		assertEquals("Craig", profile.getFirstName());
@@ -53,7 +53,7 @@ public class TripItAdapterTest {
 
 	@Test
 	public void fetchProfileMiddleName() {
-		Mockito.when(tripit.getUserProfile()).thenReturn(new TripItProfile("habuma", "habuma", "Michael Craig Walls", "cwalls@vmware.com", "Plano, TX", "SpringSource", "people/habuma", "http://static.tripit.com/uploads/images/0/0/6/006b210269799fa70ff6ae2c0cdb8a41e9c.jpg"));
+		Mockito.when(tripit.getUserProfile()).thenReturn(new TripItProfile("habuma", "habuma", "Michael Craig Walls", "cwalls@vmware.com", "Plano, TX", "SpringSource", "people/habuma", "https://static.tripit.com/uploads/images/0/0/6/006b210269799fa70ff6ae2c0cdb8a41e9c.jpg"));
 		UserProfile profile = apiAdapter.fetchUserProfile(tripit);
 		assertEquals("Michael Craig Walls", profile.getName());
 		assertEquals("Michael", profile.getFirstName());
@@ -64,7 +64,7 @@ public class TripItAdapterTest {
 	
 	@Test
 	public void fetchProfileExtraWhitespace() {
-		Mockito.when(tripit.getUserProfile()).thenReturn(new TripItProfile("habuma", "habuma", "Michael    Craig Walls", "cwalls@vmware.com", "Plano, TX", "SpringSource", "people/habuma", "http://static.tripit.com/uploads/images/0/0/6/006b210269799fa70ff6ae2c0cdb8a41e9c.jpg"));
+		Mockito.when(tripit.getUserProfile()).thenReturn(new TripItProfile("habuma", "habuma", "Michael    Craig Walls", "cwalls@vmware.com", "Plano, TX", "SpringSource", "people/habuma", "https://static.tripit.com/uploads/images/0/0/6/006b210269799fa70ff6ae2c0cdb8a41e9c.jpg"));
 		UserProfile profile = apiAdapter.fetchUserProfile(tripit);
 		assertEquals("Michael    Craig Walls", profile.getName());
 		assertEquals("Michael", profile.getFirstName());

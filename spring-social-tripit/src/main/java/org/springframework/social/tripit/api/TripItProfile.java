@@ -97,7 +97,7 @@ public class TripItProfile implements Serializable {
 	 * @return The URL to the user's profile page at TripIt
 	 */
 	public String getProfileUrl() {
-		return "http://www.tripit.com/" + profilePath;
+		return "https://www.tripit.com/" + profilePath;
 	}
 	
 	/**
