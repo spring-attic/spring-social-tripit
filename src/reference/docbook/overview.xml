@@ -7,11 +7,11 @@
     <title>Introduction</title>
 
     <para>
-	    The Spring Social TripIt project is an extension to <ulink url="http://www.springframework.org/spring-social">Spring Social</ulink> that enables integration with TripIt.
+	    The Spring Social TripIt project is an extension to <ulink url="https://www.springframework.org/spring-social">Spring Social</ulink> that enables integration with TripIt.
 	</para>
 
 	<para>
-		<ulink url="http://www.tripit.com">TripIt</ulink> is a social network that links together travelers. 
+		<ulink url="https://www.tripit.com">TripIt</ulink> is a social network that links together travelers. 
 		By connecting with other travelers, you can keep in touch with contacts when your travel plans coincide. 
 		Also, aside from its social aspects, TripIt is a rather useful service for managing one's travel information.
 	</para>
@@ -57,7 +57,7 @@
 
 	<para>
 		Spring Social TripIt uses Spring Social's <classname>OAuth1Template</classname> to add OAuth 1.0a authorization headers to requests sent to TripIt.
-		<classname>OAuth1Template</classname> uses the <ulink url="http://commons.apache.org/codec/">Commons Codec</ulink> library when calculating request signatures.
+		<classname>OAuth1Template</classname> uses the <ulink url="https://commons.apache.org/codec/">Commons Codec</ulink> library when calculating request signatures.
 		Therefore, you'll also need Commons Codec in your project:
 	</para>
 
@@ -70,7 +70,7 @@
     </programlisting>
 
 	<para>
-		Consult <ulink url="http://static.springsource.org/spring-social/docs/1.0.x/reference/html/overview.html#overview-howtoget">Spring Social's reference documentation</ulink> for more information on Spring Social dependencies.
+		Consult <ulink url="https://docs.spring.io/spring-social/docs/1.0.x/reference/html/overview.html#overview-howtoget">Spring Social's reference documentation</ulink> for more information on Spring Social dependencies.
 	</para>
   </section>
 
